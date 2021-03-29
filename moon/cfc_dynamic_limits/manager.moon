@@ -4,13 +4,13 @@ export CFCDynamicLimits
 
 CFCDynamicLimits.Manager = {
     onPlayerJoin: () =>
-        newCount = #player.GetAll!
+        newCount = player.GetCount!
 
         for name, action in pairs CFCDynamicLimits.Actions
             action\enable! if newCount == action.threshold
 
     onPlayerLeave: () =>
-        newCount = #player.GetAll!
+        newCount = player.GetCount!
 
         for name, action in pairs CFCDynamicLimits.Actions
             action\disable! if newCount == action.threshold - 1
