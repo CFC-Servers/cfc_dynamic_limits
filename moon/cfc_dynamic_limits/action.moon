@@ -25,4 +25,3 @@ class CFCDynamicLimits.Action
     disable: () =>
         @alert "#{name} has been disabled"
         @off!
-

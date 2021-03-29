@@ -17,7 +17,7 @@ do
     off = () ->
         RunConsoleCommand "wire_holograms_max", 500
         RunConsoleCommand "wire_holograms_spawn_amount", 100
-        RunConsoleCommand "wire_holograms_burst_amount" 250
+        RunConsoleCommand "wire_holograms_burst_amount", 250
 
     CFCDynamicLimits.Action "Lower-Holo-Limits", on, off, threshold, description, thresholdType
 
@@ -37,6 +37,6 @@ do
 
     off = () ->
         RunConsoleCommand "wire_holograms_spawn_amount", 50
-        RunConsoleCommand "wire_holograms_burst_amount" 50
+        RunConsoleCommand "wire_holograms_burst_amount", 50
 
     CFCDynamicLimits.Action "Lower-Holo-Limits2", on, off, threshold, description, thresholdType
