@@ -4,7 +4,7 @@ export CFCDynamicLimits
 CFCDynamicLimits.Actions = {}
 
 class CFCDynamicLimits.Action
-    new: (@name, @on, @off, @threshold): =>
+    new: (@name, @on, @off, @threshold) =>
         if @thresholdType <= 0
             CFCDynamicLimits.Logger\error "Threshold must be greater than zero"
 
