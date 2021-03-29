@@ -1,5 +1,5 @@
--- 50%
-threshold = 0.5
+threshold = 50
+thresholdType = "percentage"
 hookName = "CFCDynamicLimits_DisableRagdolls"
 
 description = {
@@ -16,4 +16,4 @@ on = () ->
 off = () ->
     hook.Remove "PlayerSpawnRagdoll", hookName
 
-CFCDynamicLimits.Action "Disable-Ragdolls", on, off, threshold, description
+CFCDynamicLimits.Action "Disable-Ragdolls", on, off, threshold, description, thresholdType
