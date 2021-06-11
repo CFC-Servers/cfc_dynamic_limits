@@ -4,12 +4,14 @@ export CFCDynamicLimits
 CFCDynamicLimits.Actions = {}
 
 class CFCDynamicLimits.Action
+    _parseThreshold = (threshold) -> Round (threshold / 100) * game.MaxPlayers!
+
     new: (@name, @on, @off, @threshold, @description, @thresholdType="number") =>
         if @threshold <= 0
             CFCDynamicLimits.Logger\error "Threshold must be greater than zero"
 
         if @thresholdType == "percentage"
-            @threshold = Round (@threshold / 100) * game.MaxPlayers!
+            @threshold = _parseThreshold @threshold
 
         CFCDynamicLimits.Actions[@name] = self
 
