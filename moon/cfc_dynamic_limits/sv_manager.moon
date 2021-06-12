@@ -42,7 +42,7 @@ hook.Add "PlayerInitialSpawn", "CFCDynamicLimits_PlayerJoin", () ->
     return nil
 
 hook.Add "PlayerDisconnected", "CFCDynamicLimits_PlayerDisconnected", () ->
-    CFCDynamicLimits.Manage.onPlayerLeave!
+    CFCDynamicLimits.Manager.onPlayerLeave!
     return nil
 
 CFCDynamicLimits.Manager = CFCDynamicLimitsManager!
