@@ -12,7 +12,7 @@ COLORS =
     YELLOW: Color 255, 255, 0
     GREEN: Color 0, 255, 0
 
-hook.Add "OnPlayerChat", "CFCDynamicLimits_DescribeAction", ( ply, text )
+hook.Add "OnPlayerChat", "CFCDynamicLimits_DescribeAction", ( ply, text ) ->
     return unless StartWith text, "!describe"
     actionName = Split(text, " ")[2]
 
