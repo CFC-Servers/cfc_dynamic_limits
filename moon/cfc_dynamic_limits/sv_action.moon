@@ -22,9 +22,9 @@ class CFCDynamicLimits.Action
             ply\ChatPrint msg
 
     enable: () =>
-        @alert "#{name} has been enabled"
+        @alert "#{@name} has been enabled"
         @on!
 
     disable: () =>
-        @alert "#{name} has been disabled"
+        @alert "#{@name} has been disabled"
         @off!
