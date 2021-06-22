@@ -1,6 +1,7 @@
 AddCSLuaFile!
 return unless CLIENT
-import StartWith, lower from string
+import Split, StartWith, lower from string
+
 
 local actionDescriptions
 net.Receive "CFCDynamicLimits_DescribeAction", ->
