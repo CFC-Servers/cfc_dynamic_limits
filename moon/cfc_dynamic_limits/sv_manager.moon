@@ -2,7 +2,7 @@ import lower from string
 import pairs from _G
 export CFCDynamicLimits
 
-DESCRIBE_ACTIONS_NET = "CFCDynamicLimits_DescribeActions"
+DESCRIBE_ACTIONS_NET = "CFC_DynamicLimits_DescribeActions"
 util.AddNetworkString DESCRIBE_ACTIONS_NET
 
 class CFCDynamicLimitsManager
@@ -29,19 +29,21 @@ class CFCDynamicLimitsManager
         net.WriteTable _actionDescriptions
         net.Send ply
 
-hook.Add "InitPostEntity", "CFCDynamicLimits_CacheActionDescriptions", () ->
+        ply.hasDescriptions = true
+
+net.Receive DESCRIBE_ACTIONS_NET, (_, ply) ->
+    return if ply.hasDescriptions
+    CFCDynamicLimits.Manager.sendActionDescriptions ply
+
+hook.Add "InitPostEntity", "CFC_DynamicLimits_CacheActionDescriptions", () ->
     CFCDynamicLimits.Manager.cacheActionDescriptions!
     return nil
 
-hook.Add "PlayerAuthed", "CFCDynamicLimits_SendActionDescriptions", (ply) ->
-    CFCDynamicLimits.Manager.sendActionDescriptions ply
-    return nil
-
-hook.Add "PlayerInitialSpawn", "CFCDynamicLimits_PlayerJoin", () ->
+hook.Add "PlayerInitialSpawn", "CFC_DynamicLimits_PlayerJoin", () ->
     CFCDynamicLimits.Manager.onPlayerJoin!
     return nil
 
-hook.Add "PlayerDisconnected", "CFCDynamicLimits_PlayerDisconnected", () ->
+hook.Add "PlayerDisconnected", "CFC_DynamicLimits_PlayerDisconnected", () ->
     CFCDynamicLimits.Manager.onPlayerLeave!
     return nil
 

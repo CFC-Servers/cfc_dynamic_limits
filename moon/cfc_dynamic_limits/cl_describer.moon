@@ -2,13 +2,23 @@ AddCSLuaFile!
 return unless CLIENT
 import Split, StartWith, lower from string
 
-
+local pendingDescription
 local actionDescriptions
-net.Receive "CFCDynamicLimits_DescribeAction", ->
+
+net.Receive "CFC_DynamicLimits_DescribeAction", ->
     return if actionDescriptions
 
     print "[CFC_Dynamic_Limits] Received action descriptions"
     actionDescriptions = net.ReadTable!
+
+    return unless pendingDescription
+
+    describeParam pendingDescription
+    pendingDescription = nil
+
+requestDescriptions = ->
+    net.Start "CFC_DynamicLimits_DescribeAction"
+    net.SendToServer!
 
 COLORS =
     RED: Color 255, 0, 0
@@ -27,15 +37,25 @@ describeAction = (name) ->
     for line in *description
         chat.AddText COLORS.YELLOW, line, "\n\n"
 
-hook.Add "OnPlayerChat", "CFCDynamicLimits_DescribeAction", ( ply, text ) ->
-    return unless StartWith text, "!describe"
-    actionName = Split(text, " ")[2]
-    actionName = lower actionName
-
+describeParam = (actionName) ->
     if actionName == "*"
         for name, description in pairs actionDescriptions
             describeAction name
     else
         describeAction actionName
+
+hook.Add "OnPlayerChat", "CFC_DynamicLimits_DescribeAction", ( ply, text ) ->
+    return unless ply == LocalPlayer!
+    return unless StartWith text, "!describe"
+
+    actionName = Split(text, " ")[2]
+    actionName = lower actionName
+
+    if not actionDescriptions
+        requestDescriptions!
+        pendingDescription = actionName
+        return
+
+    describeParam actionName
 
     return true
