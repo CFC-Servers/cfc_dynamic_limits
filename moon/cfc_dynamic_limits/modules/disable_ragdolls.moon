@@ -1,9 +1,9 @@
-threshold = 75
-thresholdType = "percentage"
+threshold = 30
+thresholdType = "number"
 hookName = "CFCDynamicLimits_DisableRagdolls"
 
 description = {
-    "At 75% server capacity, spawning ragdolls is disabled"
+    "At 30 players, spawning ragdolls is disabled"
 }
 
 on = () ->
