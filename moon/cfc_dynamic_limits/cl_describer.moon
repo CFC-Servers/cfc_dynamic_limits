@@ -1,31 +1,23 @@
-AddCSLuaFile!
-return unless CLIENT
 import Split, StartWith, lower from string
+import Actions from CFCDynamicLimits
 
+RED: Color 255, 0, 0
+YELLOW: Color 255, 255, 0
+GREEN: Color 0, 255, 0
 
-local actionDescriptions
-net.Receive "CFCDynamicLimits_DescribeAction", ->
-    return if actionDescriptions
-
-    print "[CFC_Dynamic_Limits] Received action descriptions"
-    actionDescriptions = net.ReadTable!
-
-COLORS =
-    RED: Color 255, 0, 0
-    YELLOW: Color 255, 255, 0
-    GREEN: Color 0, 255, 0
+actionDescriptions = a.name, a.description for a in *Actions
 
 describeAction = (name) ->
-    chat.AddText COLORS.GREEN, "Rule definition (#{name}):\n"
+    chat.AddText GREEN, "Rule definition (#{name}):\n"
 
     description = actionDescriptions[name]
 
     if not description
-        chat.AddText COLORS.RED, "No Action found with that name\n"
+        chat.AddText RED, "No Action found with that name\n"
         return
 
     for line in *description
-        chat.AddText COLORS.YELLOW, line, "\n\n"
+        chat.AddText YELLOW, line, "\n\n"
 
 hook.Add "OnPlayerChat", "CFCDynamicLimits_DescribeAction", ( ply, text ) ->
     return unless StartWith text, "!describe"
