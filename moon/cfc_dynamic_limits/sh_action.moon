@@ -1,5 +1,6 @@
 AddCSLuaFile!
 import Round from math
+import insert from table
 
 export CFCDynamicLimits
 CFCDynamicLimits.Actions = {}
@@ -14,7 +15,7 @@ class CFCDynamicLimits.Action
         if @thresholdType == "percentage"
             @threshold = _parseThreshold @threshold
 
-        CFCDynamicLimits.Actions[@name] = self
+        insert CFCDynamicLimits.Actions self
 
     alert: (msg) =>
         msg = "[Dynamic Limits] #{msg}"
