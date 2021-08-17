@@ -1,8 +1,8 @@
 AddCSLuaFile!
-require "cfclogger"
+require "logger"
 
 export CFCDynamicLimits = {}
-CFCDynamicLimits.Logger = CFCLogger "CFC DynamicLimits"
+CFCDynamicLimits.Logger = Logger "CFC DynamicLimits"
 
 include "cl_describer.lua"
 
