@@ -19,7 +19,7 @@ modules = file.Find "#{MODULES_PATH}/*.lua", "LUA"
 for limitModule in *modules
     path = "#{MODULES_PATH}/#{limitModule}"
 
-    AddCSLuafile path
+    AddCSLuaFile path
     include path
 
 -- TODO: Allow some way for modules to react to the current player count instead of on/off
