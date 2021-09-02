@@ -15,7 +15,7 @@ class CFCDynamicLimits.Action
         if @thresholdType == "percentage"
             @threshold = _parseThreshold @threshold
 
-        insert CFCDynamicLimits.Actions self
+        insert CFCDynamicLimits.Actions, self
 
     alert: (msg) =>
         msg = "[Dynamic Limits] #{msg}"
