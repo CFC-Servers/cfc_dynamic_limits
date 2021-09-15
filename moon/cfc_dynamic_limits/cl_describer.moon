@@ -20,14 +20,13 @@ describeAction = (name) ->
         chat.AddText YELLOW, line, "\n\n"
 
 hook.Add "OnPlayerChat", "CFCDynamicLimits_DescribeAction", ( ply, text ) ->
-    return unless StartWith text, "!describe"
+    return unless StartWith text, "!dynlimits"
     actionName = Split(text, " ")[2]
-    actionName = lower actionName
 
-    if actionName == "*"
+    if not actionName
         for name, description in pairs actionDescriptions
             describeAction name
     else
-        describeAction actionName
+        describeAction lower actionName
 
     return true
