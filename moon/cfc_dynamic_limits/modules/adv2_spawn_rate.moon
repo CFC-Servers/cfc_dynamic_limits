@@ -4,7 +4,7 @@ do
 
     description = {
         "At 50% server capacity, the following values are changed:",
-        "AdvDupe2_SpawnRate: 0.5 -> 0.6"
+        "  AdvDupe2_SpawnRate: 0.5 -> 0.6"
     }
 
     on = () ->
@@ -21,7 +21,7 @@ do
 
     description = {
         "At 100% server capacity, the following values are changed:",
-        "AdvDupe2_SpawnRate: 0.6 -> 0.75"
+        "  AdvDupe2_SpawnRate: 0.6 -> 0.75"
     }
 
     on = () ->

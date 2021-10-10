@@ -4,9 +4,9 @@ do
 
     description = {
         "At 75% server capacity, the following values are changed:",
-        "wire_holograms_max: 500 -> 200",
-        "wire_holograms_spawn_amount: 100 -> 50",
-        "wire_holograms_burst_amount: 250 -> 50"
+        "  wire_holograms_max: 500 -> 200",
+        "  wire_holograms_spawn_amount: 100 -> 50",
+        "  wire_holograms_burst_amount: 250 -> 50"
     }
 
     on = () ->
@@ -27,8 +27,8 @@ do
 
     description = {
         "At 100% server capacity, the following values are changed:",
-        "wire_holograms_spawn_amount: 50 -> 25",
-        "wire_holograms_burst_amount: 50 -> 30"
+        "  wire_holograms_spawn_amount: 50 -> 25",
+        "  wire_holograms_burst_amount: 50 -> 30"
     }
 
     on = () ->
