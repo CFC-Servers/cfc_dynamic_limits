@@ -3,7 +3,7 @@ thresholdType = "percentage"
 
 description = {
     "At 75% server capacity, the following values are changed:",
-    "pac_sv_draw_distance: 8000 -> 1000"
+    "    pac_sv_draw_distance: 8000 -> 1000"
 }
 
 on = () ->
