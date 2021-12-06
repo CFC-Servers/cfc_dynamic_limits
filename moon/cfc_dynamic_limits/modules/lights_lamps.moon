@@ -5,26 +5,27 @@ thresholdType = "percentage"
 hookName = "CFCDynamicLimits_LowerLightsLamps"
 
 description = {
-    "At 75% server capacity, lights and lamp names are halved"
+    "At 75% server capacity, lights and lamp are disabled"
 }
 
-modify = (mod) ->
-    wire_lamps = GetConVar "sbox_maxwire_lamps"
-    wire_lamps\SetInt floor wire_lamps\GetInt! * mod
+cvars = {
+    sbox_maxwire_lamps: {},
+    sbox_maxwire_lights: {},
+    sbox_maxlamps: {},
+    lights: {}
+}
 
-    wire_lights = GetConVar "sbox_maxwire_lights"
-    wire_lights\SetInt floor wire_lights\GetInt! * mod
-
-    lamps = GetConVar "sbox_maxlamps"
-    lamps\SetInt floor lights\GetInt! * mod
-
-    lights = GetConVar "sbox_maxlights"
-    lights\SetInt floor lamps\GetInt! * mod
+hook.Add "Initialize", "CFCDynamicLimits_SetLightsLampsDefaults", ->
+    for name, data in pairs cvars
+        data.cvar = GetConVar name
+        data.default = data.cvar\GetInt!
 
 on = () ->
-    modify 0.5
+    for _, data in pairs cvars
+        data.cvar\SetInt 0
 
 off = () ->
-    modify 2
+    for _, data in pairs cvars
+        data.cvar\SetInt data.default
 
-CFCDynamicLimits.Action "Lower-Lights-Lamps", on, off, threshold, description, thresholdType
+CFCDynamicLimits.Action "Disable-Lights-Lamps", on, off, threshold, description, thresholdType
