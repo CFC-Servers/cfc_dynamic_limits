@@ -10,7 +10,7 @@ on = () ->
     hook.Add "PlayerSpawnRagdoll", hookName, (ply) ->
         return if ply\IsAdmin!
 
-        ply\ChatPrint "Ragdolls are disabled when the server is at half capacity"
+        ply\ChatPrint "Ragdolls are disabled when the server is at 75% capacity"
         return false
 
 off = () ->
