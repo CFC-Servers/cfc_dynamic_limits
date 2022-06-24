@@ -38,13 +38,13 @@ do
 
     description = {
         "At 80% server capacity, the following values are changed:",
-        "  AdvDupe2_SpawnRate: 0.35 -> 0.2"
+        "  AdvDupe2_SpawnRate: 0.35 -> 0.125"
     }
 
     on = () ->
         RunConsoleCommand "AdvDupe2_SpawnRate", 0.2
 
     off = () ->
-        RunConsoleCommand "AdvDupe2_SpawnRate", 0.35
+        RunConsoleCommand "AdvDupe2_SpawnRate", 0.125
 
     CFCDynamicLimits.Action "Slower-Adv2-Spawn-Rate3", on, off, threshold, description, thresholdType
