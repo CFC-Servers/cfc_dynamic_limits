@@ -10,30 +10,21 @@ description = {
 
 isInEffect = false
 
-hook.Add "InitPostEntity", "CFCDynamicLimits_WrapLightsLamps", ->
-    -- Gmod Lights
-    with scripted_ents.GetStored("gmod_light").t
+trackedEnts =
+    gmod_light: true
+    gmod_lamp: true
+    gmod_wire_light: true
+    gmod_wire_lamp: true
+
+wrapSetOn = (ent) ->
+    with ent
         .DynamicLimits_OldSetOn = .SetOn
         .SetOn = (on) =>
             return if isInEffect and on
             @DynamicLimits_OldSetOn on
 
-    -- Gmod Lamps
-    with scripted_ents.GetStored("gmod_lamp").t
-        .DynamicLimits_OldSetOn = .SetOn
-        .SetOn = (on) =>
-            return if isInEffect and on
-            @DynamicLimits_OldSetOn on
-
-    -- Wire Lamps
-    with scripted_ents.GetStored("gmod_wire_lamp").t
-        .DynamicLimits_OldSetOn = .SetOn
-        .SetOn = (on) =>
-            return if isInEffect and on
-            @DynamicLimits_OldSetOn on
-
-    -- Wire Lights
-    with scripted_ents.GetStored("gmod_wire_light").t
+wrapWireLight = (light) ->
+    with light
         .DynamicLimits_OldSetR = .SetR
         .DynamicLimits_OldSetG = .SetG
         .DynamicLimits_OldSetB = .SetB
@@ -49,6 +40,16 @@ hook.Add "InitPostEntity", "CFCDynamicLimits_WrapLightsLamps", ->
         .SetB = (b) =>
             return if isInEffect and b > 0
             @DynamicLimits_OldSetB b
+
+hook.Add "OnEntityCreated", "DynamicLimits_WrapLightsLamps", (ent) ->
+    return unless trackedEnts[ent\GetClass!]
+
+    if ent.SetOn
+        wrapSetOn ent
+    else if ent.SetR
+        wrapWireLight ent
+
+    return nil
 
 on = () ->
     isInEffect = true
