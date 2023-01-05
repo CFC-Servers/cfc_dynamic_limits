@@ -1,9 +1,9 @@
-threshold = 16
+threshold = 25
 thresholdType = "number"
 hookName = "CFCDynamicLimits_DisableACFCannons"
 
 description = {
-    "At 16 players, ACF Cannons are disabled"
+    "At 25 players, ACF Cannons are disabled"
 }
 
 on = () -> GetConVar( "acf_surprise" )\SetBool true
