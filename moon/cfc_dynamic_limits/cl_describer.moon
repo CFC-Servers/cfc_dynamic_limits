@@ -25,7 +25,7 @@ describeAction = (name) ->
 
 
 hook.Add "OnPlayerChat", "CFCDynamicLimits_DescribeAction", ( ply, text ) ->
-    return unless ply == LocalPlayer()
+    return unless ply == LocalPlayer!
     return unless StartWith text, "!dynlimits"
     actionName = Split(text, " ")[2]
 
