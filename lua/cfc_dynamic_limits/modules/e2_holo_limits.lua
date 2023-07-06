@@ -20,7 +20,7 @@ do
         RunConsoleCommand( "wire_holograms_burst_amount", 250 )
     end
 
-    CFCDynamicLimits.Action( "Lower-Holo-Limits", on, off, threshold, description, thresholdType )
+    CFCDynamicLimits.Action( "Lower Holo Limits 75%", on, off, threshold, description, thresholdType )
 end
 
 do
@@ -42,5 +42,5 @@ do
         RunConsoleCommand( "wire_holograms_burst_amount", 50 )
     end
 
-    CFCDynamicLimits.Action( "Lower-Holo-Limits2", on, off, threshold, description, thresholdType )
+    CFCDynamicLimits.Action( "Lower Holo Limits 100%", on, off, threshold, description, thresholdType )
 end

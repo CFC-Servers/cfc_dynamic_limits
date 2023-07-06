@@ -13,4 +13,4 @@ local function off()
     RunConsoleCommand( "pac_sv_draw_distance", 8000 )
 end
 
-CFCDynamicLimits.Action( "Lower-PAC-Render-Distance", on, off, threshold, description, thresholdType )
+CFCDynamicLimits.Action( "Lower PAC Render Distance", on, off, threshold, description, thresholdType )

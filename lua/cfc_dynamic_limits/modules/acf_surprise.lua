@@ -12,4 +12,4 @@ local function off()
     GetConVar( "acf_surprise" ):SetBool( false )
 end
 
-CFCDynamicLimits.Action( "Disable-ACF", on, off, threshold, description, thresholdType )
+CFCDynamicLimits.Action( "Disable ACF", on, off, threshold, description, thresholdType )

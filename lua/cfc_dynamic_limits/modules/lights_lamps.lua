@@ -83,4 +83,4 @@ local function off()
     isInEffect = false
 end
 
-CFCDynamicLimits.Action( "Disable-Lights-Lamps", on, off, threshold, description, thresholdType )
+CFCDynamicLimits.Action( "Disable Lights and Lamps", on, off, threshold, description, thresholdType )

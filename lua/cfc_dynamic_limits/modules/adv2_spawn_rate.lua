@@ -14,7 +14,7 @@ do
         RunConsoleCommand( "AdvDupe2_SpawnRate", 1 )
     end
 
-    CFCDynamicLimits.Action( "Slower-Adv2-Spawn-Rate", on, off, threshold, description, thresholdType )
+    CFCDynamicLimits.Action( "Slower Adv2 Spawn Rate 40%", on, off, threshold, description, thresholdType )
 end
 
 do
@@ -33,5 +33,5 @@ do
         RunConsoleCommand( "AdvDupe2_SpawnRate", 0.5 )
     end
 
-    CFCDynamicLimits.Action( "Slower-Adv2-Spawn-Rate2", on, off, threshold, description, thresholdType )
+    CFCDynamicLimits.Action( "Slower Adv2 Spawn Rate 70%", on, off, threshold, description, thresholdType )
 end

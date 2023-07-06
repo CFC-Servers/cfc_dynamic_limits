@@ -18,4 +18,4 @@ local function off()
     hook.Remove( "PlayerSpawnRagdoll", hookName )
 end
 
-CFCDynamicLimits.Action( "Disable-Ragdolls", on, off, threshold, description, thresholdType )
+CFCDynamicLimits.Action( "Disable Ragdolls", on, off, threshold, description, thresholdType )
