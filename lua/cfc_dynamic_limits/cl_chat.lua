@@ -51,6 +51,12 @@ hook.Add( "OnPlayerChat", "CFC_DynamicLimits_ChatCommand", function( ply, text )
         panel:DockMargin( 0, 0, 0, 5 )
         panel:DockPadding( 5, 10, 5, 5 )
 
+        local requirement = vgui.Create( "DLabel", panel )
+        requirement:SetText( player.GetCount() .. "/" .. mod.threshold .. " players" )
+        requirement:SetFont( "DermaDefault" )
+        requirement:SetTextColor( prefixColor )
+        requirement:Dock( RIGHT )
+
         local label = vgui.Create( "DLabel", panel )
         label:SetText( moduleName )
         label:SetFont( "ScoreboardDefault" )
@@ -60,7 +66,7 @@ hook.Add( "OnPlayerChat", "CFC_DynamicLimits_ChatCommand", function( ply, text )
         local description = vgui.Create( "DLabel", panel )
         description:SetText( descriptionText )
         description:SetFont( "DermaDefault" )
-        description:SetTextColor( textColor )
+        description:SetTextColor( prefixColor )
         description:Dock( FILL )
     end
 
