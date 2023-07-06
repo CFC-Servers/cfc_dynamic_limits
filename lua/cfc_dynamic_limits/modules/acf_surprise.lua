@@ -5,11 +5,15 @@ local description = {
 }
 
 local function on()
-    GetConVar( "acf_surprise" ):SetBool( true )
+    local cvar = GetConVar( "acf_surprise" )
+    if not cvar then return end
+    cvar:SetBool( true )
 end
 
 local function off()
-    GetConVar( "acf_surprise" ):SetBool( false )
+    local cvar = GetConVar( "acf_surprise" )
+    if not cvar then return end
+    cvar:SetBool( false )
 end
 
 CFCDynamicLimits.Action( "Disable ACF", on, off, threshold, description, thresholdType )

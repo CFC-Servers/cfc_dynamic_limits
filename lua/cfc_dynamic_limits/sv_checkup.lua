@@ -21,7 +21,6 @@ local function disableModule( mod )
 end
 
 local function checkModule( plyCount, mod )
-    print( "Checking module " .. mod.name .. " with threshold " .. mod.threshold .. " and current player count " .. plyCount )
     if plyCount >= mod.threshold then
         if not mod.enabled then
             enableModule( mod )
