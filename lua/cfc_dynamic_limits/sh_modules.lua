@@ -22,7 +22,7 @@ function CFCDynamicLimits.Action( name, onFunc, offFunc, threshold, descriptionT
             name = name,
             threshold = threshold,
             description = descriptionTbl,
-            enabled = false
+            enabled = player.GetCount() >= threshold
         }
     end
 end
