@@ -4,15 +4,17 @@ local prefix = "• Dynamic Limits "
 
 net.Receive( "cfc_dynamiclimits_notify", function()
     local moduleName = net.ReadString()
+
+    local mod = CFCDynamicLimits.Modules[moduleName]
+    if not mod then return end
+
     local enable = net.ReadBool()
 
-    if not CFCDynamicLimits.Modules[moduleName] then return end
-
     if enable then
-        CFCDynamicLimits.Modules[moduleName].enabled = true
+        mod.enabled = true
         chat.AddText( prefixColor, prefix, Color( 0, 255, 0 ), moduleName, textColor, " has been enabled." )
     else
-        CFCDynamicLimits.Modules[moduleName].enabled = false
+        mod.enabled = false
         chat.AddText( prefixColor, prefix, Color( 255, 0, 0 ), moduleName, textColor, " has been disabled." )
     end
 end )

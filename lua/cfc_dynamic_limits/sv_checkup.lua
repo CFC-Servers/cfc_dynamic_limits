@@ -36,9 +36,9 @@ local function recheckLimits()
     local plyCount = player.GetCount()
 
     for _, mod in pairs( modules ) do
-        ProtectedCall( function() checkModule( plyCount, mod ) end )
+        checkModule( plyCount, mod )
     end
 end
 
-hook.Add( "PlayerAuthed", "CFC_DynamicLimits", recheckLimits )
+hook.Add( "PlayerInitialSpawn", "CFC_DynamicLimits", recheckLimits )
 hook.Add( "PlayerDisconnected", "CFC_DynamicLimits", recheckLimits )

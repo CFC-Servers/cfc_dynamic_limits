@@ -9,7 +9,7 @@ local function on()
     hook.Add( "PlayerSpawnRagdoll", hookName, function( ply )
         if ply:IsAdmin() then return end
 
-        ply:ChatPrint( "Ragdolls are disabled when the server is at 75% capacity" )
+        ply:ChatPrint( "Ragdolls are disabled when the server is at or above 75% capacity" )
         return false
     end )
 end

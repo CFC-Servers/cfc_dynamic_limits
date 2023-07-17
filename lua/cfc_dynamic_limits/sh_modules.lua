@@ -8,13 +8,23 @@ function CFCDynamicLimits.Action( name, onFunc, offFunc, threshold, descriptionT
     end
 
     if SERVER then
-        CFCDynamicLimits.Modules[name] = {
+        local mod = {
             name = name,
-            on = onFunc,
-            off = offFunc,
             threshold = threshold,
             enabled = false
         }
+
+        function mod.on()
+            onFunc()
+            mod.enabled = true
+        end
+
+        function mod.off()
+            offFunc()
+            mod.enabled = false
+        end
+
+        CFCDynamicLimits.Modules[name] = mod
     end
 
     if CLIENT then
@@ -29,6 +39,7 @@ end
 
 local moduleFiles = file.Find( "cfc_dynamic_limits/modules/*.lua", "LUA" )
 for _, fil in pairs( moduleFiles ) do
+    print( "Loading module " .. fil )
     if SERVER then
         AddCSLuaFile( "cfc_dynamic_limits/modules/" .. fil )
     end
