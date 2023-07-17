@@ -33,11 +33,13 @@ local function checkModule( plyCount, mod )
 end
 
 local function recheckLimits()
-    local plyCount = player.GetCount()
+    timer.Simple( 0, function()
+        local plyCount = player.GetCount()
 
-    for _, mod in pairs( modules ) do
-        checkModule( plyCount, mod )
-    end
+        for _, mod in pairs( modules ) do
+            checkModule( plyCount, mod )
+        end
+    end )
 end
 
 hook.Add( "PlayerInitialSpawn", "CFC_DynamicLimits", recheckLimits )
