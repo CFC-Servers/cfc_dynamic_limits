@@ -33,7 +33,10 @@ local function checkModule( plyCount, mod )
 end
 
 local function shouldCountPlayer( ply )
-    if ply:GetNWBool( "CFC_AntiAFK_IsAFK" ) then return false end -- Anti-AFK
+    local result = hook.Run( "CFC_DynamicLimits_ShouldCountPlayer", ply )
+    if result == false then
+        return false
+    end
 
     return true
 end
