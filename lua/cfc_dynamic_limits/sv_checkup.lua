@@ -32,9 +32,23 @@ local function checkModule( plyCount, mod )
     end
 end
 
+local function shouldCountPlayer( ply )
+    local result = hook.Run( "CFC_DynamicLimits_ShouldCountPlayer", ply )
+    if result == false then
+        return false
+    end
+
+    return true
+end
+
 local function recheckLimits()
     timer.Simple( 0, function()
-        local plyCount = player.GetCount()
+        local plyCount = 0
+        for _, ply in ipairs( player.GetAll() ) do
+            if shouldCountPlayer( ply ) then
+                plyCount = plyCount + 1
+            end
+        end
 
         for _, mod in pairs( modules ) do
             checkModule( plyCount, mod )
@@ -44,3 +58,6 @@ end
 
 hook.Add( "PlayerInitialSpawn", "CFC_DynamicLimits", recheckLimits )
 hook.Add( "PlayerDisconnected", "CFC_DynamicLimits", recheckLimits )
+
+-- Custom hooks
+hook.Add( "CFC_AntiAFK_StatusChange", "CFC_DynamicLimits", recheckLimits )
