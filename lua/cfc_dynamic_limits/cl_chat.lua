@@ -55,7 +55,7 @@ hook.Add( "OnPlayerChat", "CFC_DynamicLimits_ChatCommand", function( ply, text )
 
         local requirement = vgui.Create( "DLabel", panel )
         requirement:SetWide( 70 )
-        requirement:SetText( player.GetCount() .. "/" .. mod.threshold .. " players" )
+        requirement:SetText( GetGlobal2Int( "CFC_DynamicLimits_PlayersCounted", player.GetCount() ) .. "/" .. mod.threshold .. " players" )
         requirement:SetFont( "DermaDefault" )
         requirement:SetTextColor( prefixColor )
         requirement:Dock( RIGHT )

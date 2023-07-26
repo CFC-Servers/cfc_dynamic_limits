@@ -50,6 +50,8 @@ local function recheckLimits()
             end
         end
 
+        SetGlobal2Int( "CFC_DynamicLimits_PlayersCounted", plyCount )
+
         for _, mod in pairs( modules ) do
             checkModule( plyCount, mod )
         end
