@@ -60,5 +60,4 @@ hook.Add( "PlayerInitialSpawn", "CFC_DynamicLimits", recheckLimits )
 hook.Add( "PlayerDisconnected", "CFC_DynamicLimits", recheckLimits )
 
 -- Custom hooks
-hook.Add( "CFC_AntiAFK_SetAFK", "CFC_DynamicLimits", recheckLimits )
-hook.Add( "CFC_AntiAFK_RemoveAFK", "CFC_DynamicLimits", recheckLimits )
+hook.Add( "CFC_AntiAFK_StatusChange", "CFC_DynamicLimits", recheckLimits )
