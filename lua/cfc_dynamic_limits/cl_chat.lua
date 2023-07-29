@@ -23,7 +23,7 @@ end )
 hook.Add( "OnPlayerChat", "CFC_DynamicLimits_ChatCommand", function( ply, text )
     local txt = string.lower( text )
     if txt ~= "!dynlimits" then return end
-    if ply ~= LocalPlayer() then return "" end
+    if ply ~= LocalPlayer() then return true end
 
     local menu = vgui.Create( "DFrame" )
     menu:SetSize( 400, 630 )
@@ -73,5 +73,5 @@ hook.Add( "OnPlayerChat", "CFC_DynamicLimits_ChatCommand", function( ply, text )
         description:Dock( FILL )
     end
 
-    return ""
+    return true
 end )
