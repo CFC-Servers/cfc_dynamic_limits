@@ -1,4 +1,4 @@
-local threshold = 25
+local threshold = 2
 local thresholdType = "number"
 local description = {
     "At 25 players, ACF weapons are disabled"
@@ -16,4 +16,4 @@ local function off()
     end
 end
 
-CFCDynamicLimits.Action( "Disable ACF", on, off, threshold, description, thresholdType )
+CFCDynamicLimits.Action( "ACF", on, off, threshold, description, thresholdType, true )

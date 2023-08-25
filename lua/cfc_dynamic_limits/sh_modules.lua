@@ -1,4 +1,4 @@
-function CFCDynamicLimits.Action( name, onFunc, offFunc, threshold, descriptionTbl, thresholdType )
+function CFCDynamicLimits.Action( name, onFunc, offFunc, threshold, descriptionTbl, thresholdType, invertedPrint )
     if threshold <= 0 then
         error( "threshold must be greater than 0" )
     end
@@ -7,10 +7,13 @@ function CFCDynamicLimits.Action( name, onFunc, offFunc, threshold, descriptionT
         threshold = math.Round( threshold / 100 * game.MaxPlayers() )
     end
 
+    invertedPrint = invertedPrint or false
+
     if SERVER then
         local mod = {
             name = name,
             threshold = threshold,
+            invertedPrint = invertedPrint,
             enabled = false
         }
 
@@ -32,7 +35,8 @@ function CFCDynamicLimits.Action( name, onFunc, offFunc, threshold, descriptionT
             name = name,
             threshold = threshold,
             description = descriptionTbl,
-            enabled = player.GetCount() >= threshold
+            invertedPrint = invertedPrint,
+            enabled = player.GetCount() >= threshold,
         }
     end
 end
