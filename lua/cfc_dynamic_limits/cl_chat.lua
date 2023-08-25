@@ -11,11 +11,12 @@ net.Receive( "cfc_dynamiclimits_notify", function()
     local enable = net.ReadBool()
     mod.enabled = enable
 
+    local printEnable = enable
     if mod.invertedPrint then
-        enable = not enable
+        printEnable = not enable
     end
 
-    if enable then
+    if printEnable then
         chat.AddText( prefixColor, prefix, Color( 0, 255, 0 ), moduleName, textColor, " has been enabled." )
     else
         chat.AddText( prefixColor, prefix, Color( 255, 0, 0 ), moduleName, textColor, " has been disabled." )
