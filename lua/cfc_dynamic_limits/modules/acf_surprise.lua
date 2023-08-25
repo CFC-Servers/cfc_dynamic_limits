@@ -1,4 +1,4 @@
-local threshold = 2
+local threshold = 25
 local thresholdType = "number"
 local description = {
     "At 25 players, ACF weapons are disabled"
