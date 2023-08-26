@@ -1,5 +1,7 @@
 local prefixColor = Color( 41, 41, 41 )
 local textColor = Color( 180, 180, 180 )
+local enableColor = Color( 0, 255, 0 )
+local disableColor = Color( 255, 0, 0 )
 local prefix = "• Dynamic Limits "
 
 net.Receive( "cfc_dynamiclimits_notify", function()
@@ -9,13 +11,17 @@ net.Receive( "cfc_dynamiclimits_notify", function()
     if not mod then return end
 
     local enable = net.ReadBool()
+    mod.enabled = enable
 
-    if enable then
-        mod.enabled = true
-        chat.AddText( prefixColor, prefix, Color( 0, 255, 0 ), moduleName, textColor, " has been enabled." )
+    local printEnable = enable
+    if mod.invertedPrint then
+        printEnable = not enable
+    end
+
+    if printEnable then
+        chat.AddText( prefixColor, prefix, enableColor, moduleName, textColor, " has been enabled." )
     else
-        mod.enabled = false
-        chat.AddText( prefixColor, prefix, Color( 255, 0, 0 ), moduleName, textColor, " has been disabled." )
+        chat.AddText( prefixColor, prefix, disableColor, moduleName, textColor, " has been disabled." )
     end
 end )
 

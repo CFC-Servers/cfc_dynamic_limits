@@ -16,4 +16,4 @@ local function off()
     end
 end
 
-CFCDynamicLimits.Action( "Disable ACF", on, off, threshold, description, thresholdType )
+CFCDynamicLimits.Action( "ACF", on, off, threshold, description, thresholdType, true )
