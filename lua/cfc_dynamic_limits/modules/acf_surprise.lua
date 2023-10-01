@@ -1,7 +1,7 @@
-local threshold = 25
+local threshold = 28
 local thresholdType = "number"
 local description = {
-    "At 25 players, ACF weapons are disabled"
+    "At 28 players, ACF weapons are disabled"
 }
 
 local function on()
