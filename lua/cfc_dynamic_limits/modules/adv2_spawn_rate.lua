@@ -1,8 +1,8 @@
 do
-    local threshold = 40
+    local threshold = 20 -- 20% of 64 is 12
     local thresholdType = "percentage"
     local description = {
-        "At 40% server capacity, the following values are changed:",
+        "At 20% server capacity, the following values are changed:",
         "  AdvDupe2_SpawnRate: 1 -> 0.5"
     }
 
@@ -14,14 +14,14 @@ do
         RunConsoleCommand( "AdvDupe2_SpawnRate", 1 )
     end
 
-    CFCDynamicLimits.Action( "Slower Adv2 Spawn Rate 40%", on, off, threshold, description, thresholdType )
+    CFCDynamicLimits.Action( "Slower Adv2 Spawn Rate 10%", on, off, threshold, description, thresholdType )
 end
 
 do
-    local threshold = 70
+    local threshold = 50
     local thresholdType = "percentage"
     local description = {
-        "At 70% server capacity, the following values are changed:",
+        "At 50% server capacity, the following values are changed:",
         "  AdvDupe2_SpawnRate: 0.5 -> 0.35"
     }
 
@@ -33,5 +33,5 @@ do
         RunConsoleCommand( "AdvDupe2_SpawnRate", 0.5 )
     end
 
-    CFCDynamicLimits.Action( "Slower Adv2 Spawn Rate 70%", on, off, threshold, description, thresholdType )
+    CFCDynamicLimits.Action( "Slower Adv2 Spawn Rate 50%", on, off, threshold, description, thresholdType )
 end
